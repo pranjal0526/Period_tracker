@@ -1,0 +1,25 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .phase1 { fill: #E76F8F; }
+    .phase2 { fill: #9B6B9E; }
+    .phase3 { fill: #F4A3B5; }
+    .bg-circle { fill: #FFEEF3; }
+    @media (prefers-color-scheme: dark) {
+      .phase1 { fill: #D95F7F; }
+      .phase2 { fill: #8B5B8E; }
+      .phase3 { fill: #E493A5; }
+      .bg-circle { fill: #2A1F28; }
+    }
+  </style>
+  <circle class="bg-circle" cx="64" cy="64" r="60" />
+  <path
+    class="phase1"
+    d="M 64 24 A 40 40 0 0 1 64 104 A 32 32 0 0 0 64 24 Z"
+  />
+  <path
+    class="phase2"
+    d="M 64 24 A 40 40 0 0 0 64 104 A 32 32 0 0 1 64 24 Z"
+    opacity="0.9"
+  />
+  <circle class="phase3" cx="64" cy="64" r="8" />
+</svg>
