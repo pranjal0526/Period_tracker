@@ -117,3 +117,5 @@ Preview deployments:
 - `NEXTAUTH_SECRET` must be a strong random string and must not change unless you are okay invalidating sessions.
 - `ENCRYPTION_SALT` must stay stable after first production deploy, or encrypted notes and stored user master keys will stop decrypting correctly.
 - If you change any Vercel environment variable, it only applies to new deployments, so redeploy after updates.
+
+Live preview : https://period-tracker-sage-five.vercel.app/
