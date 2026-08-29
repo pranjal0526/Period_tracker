@@ -1,121 +1,204 @@
-# Ember Period Tracker
+#  Ember Period Tracker
 
-Privacy-first period tracking with Google OAuth, MongoDB, encrypted health notes, AI-generated summaries, and a consent-based partner companion mode.
+**Ember Period Tracker** is a privacy-first, AI-powered menstrual health platform designed to help users track their cycles, symptoms, moods, and personal health information in one secure and intuitive application.
 
-## What's in this first build
+The platform combines **period and cycle tracking with AI-powered health insights**, secure authentication, encrypted sensitive notes, and a consent-based partner companion mode. It is built as a modern full-stack web application using **Next.js, TypeScript, MongoDB, NextAuth.js, Tailwind CSS, and AI APIs**.
 
-- Marketing landing page and Google sign-in flow
-- Protected dashboard, calendar, AI assistant, partner, and settings routes
-- NextAuth Google provider wiring with JWT sessions
-- MongoDB + Mongoose models for users, cycles, symptoms, moods, partner connections, AI insights, and messages
-- Encrypted storage helpers for sensitive notes
-- API routes for cycles, symptoms, moods, partner actions, AI chat, and AI analysis
-- Tailwind-based UI shell with charts, forms, and setup fallbacks
+## 🚀 Live Demo
 
-## Tech stack
+🌐 **Try the application:**
+https://period-tracker-sage-five.vercel.app/
 
-- Next.js App Router
-- TypeScript
-- Tailwind CSS
-- NextAuth.js
-- MongoDB Atlas + Mongoose
-- Framer Motion
-- Recharts
-- CryptoJS
+---
 
-## Local setup
+## ✨ Key Features
 
-1. Install dependencies:
+### 📅 Cycle & Period Tracking
 
-```bash
-npm install
+Users can record and monitor their menstrual cycles through an interactive dashboard and calendar, making it easier to understand cycle patterns and important dates.
+
+### 📊 Symptom & Mood Tracking
+
+The application allows users to record symptoms and moods over time, creating a structured history that can be used to identify patterns and generate personalized insights.
+
+### 🤖 AI Health Assistant
+
+An integrated AI assistant provides conversational support and generates summaries based on the user's available tracking data.
+
+The AI layer can be used for:
+
+* Health-data summaries
+* Pattern interpretation
+* Conversational assistance
+* Personalized insights
+
+> AI-generated information is intended for informational purposes and is not a substitute for professional medical advice.
+
+### 🔐 Privacy-Focused Health Data
+
+Privacy is a core part of the project. Sensitive free-text health notes can be **encrypted before being stored**, helping protect personal information from unauthorized access.
+
+### 🔑 Google Authentication
+
+The application uses **Google OAuth through NextAuth.js** for secure and convenient authentication, with protected application routes and JWT-based sessions.
+
+### 🤝 Consent-Based Partner Mode
+
+Users can invite and connect with a partner through a dedicated companion mode, allowing health-related information to be shared through an explicit consent-based flow.
+
+### 📈 Interactive Dashboard
+
+The dashboard brings important information together in one place, including cycle information, tracked symptoms, moods, insights, and other relevant health data.
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+
+* Next.js
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+* Recharts
+
+**Backend**
+
+* Next.js App Router
+* API Routes
+* NextAuth.js
+* MongoDB
+* Mongoose
+
+**AI**
+
+* Groq API
+* LLM-powered chat and health summaries
+
+**Security**
+
+* Google OAuth
+* JWT sessions
+* CryptoJS
+* Encrypted sensitive notes
+
+---
+
+## 🏗️ Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │       User          │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Next.js Frontend  │
+                    │  Dashboard / UI     │
+                    └──────────┬──────────┘
+                               │
+                ┌──────────────┼──────────────┐
+                ▼              ▼              ▼
+        ┌──────────────┐ ┌────────────┐ ┌──────────────┐
+        │ Authentication│ │ API Routes │ │ AI Assistant │
+        │  NextAuth     │ │            │ │    Groq      │
+        └──────────────┘ └─────┬──────┘ └──────────────┘
+                               │
+                               ▼
+                       ┌───────────────┐
+                       │   MongoDB     │
+                       │   Mongoose    │
+                       └───────────────┘
+                               │
+                               ▼
+                     🔐 Protected Health Data
 ```
 
-2. Copy the environment template:
+---
 
-```bash
-cp .env.example .env.local
-```
+## 📂 Main Application Modules
 
-3. Fill in these values in `.env.local`:
+The current application includes dedicated routes/modules for:
 
-- `MONGODB_URI`
-- `NEXTAUTH_URL`
-- `NEXTAUTH_SECRET`
-- `GOOGLE_CLIENT_ID`
-- `GOOGLE_CLIENT_SECRET`
-- `GROQ_API_KEY` (optional, but required for live AI wording)
-- `GROQ_MODEL` (optional)
-- `ENCRYPTION_SALT`
+* `/` — Landing page
+* `/login` — Google authentication
+* `/dashboard` — Main health overview
+* `/calendar` — Cycle tracking and calendar
+* `/ai-assistant` — AI chat and summaries
+* `/partner` — Partner invitation and connection
+* `/settings` — Account and integration settings
 
-4. Start the app:
+---
 
-```bash
-npm run dev
-```
+## 🔒 Privacy & Security
 
-5. Open `http://localhost:3000`
+Because menstrual and reproductive health information is highly personal, the project is designed with privacy in mind.
 
-## Main routes
+Key security considerations include:
 
-- `/` landing page
-- `/login` Google sign-in
-- `/dashboard` main overview
-- `/calendar` cycle timing view
-- `/ai-assistant` AI chat and summary generation
-- `/partner` invite and connect partner mode
-- `/settings` integration readiness and account summary
+* OAuth-based authentication
+* Protected application routes
+* JWT sessions
+* Encrypted sensitive notes
+* Environment-based secret management
+* Secure database connectivity
+* Consent-based partner sharing
 
-## Notes
+Sensitive credentials and API keys are kept outside the repository using environment variables.
 
-- The build scripts use Webpack because it was the most reliable path in this environment.
-- Live auth, database writes, and AI responses require your real environment values.
-- Sensitive free-text notes are encrypted before storage when a user encryption key is available.
+---
 
-## Vercel deployment with GitHub
+## 🎯 Project Goals
 
-1. Push this repo to GitHub.
-2. Import the GitHub repo into Vercel as a new project.
-3. Keep the framework preset as `Next.js`.
-4. Add the environment variables below in Vercel Project Settings.
-5. Redeploy after saving environment variables.
+The main goal of Ember is to build a **single, privacy-conscious platform for menstrual health tracking and personalized insights**, rather than treating cycle tracking as only a calendar problem.
 
-### Environment variables to add in Vercel
+The project focuses on combining:
 
-Set these for `Production`:
+**Tracking + Privacy + AI + Personalization + Consent**
 
-- `MONGODB_URI`
-- `NEXTAUTH_URL`
-- `NEXTAUTH_SECRET`
-- `GOOGLE_CLIENT_ID`
-- `GOOGLE_CLIENT_SECRET`
-- `ENCRYPTION_SALT`
+into one modern healthcare-oriented web application.
 
-Set these if you want live AI insights in production:
+---
 
-- `GROQ_API_KEY`
-- `GROQ_MODEL` (optional, defaults to `llama-3.1-8b-instant`)
+## 🔮 Future Improvements
 
-You can usually set the same values for `Preview`, but Google OAuth needs special care because redirect URLs must be explicitly allowed.
+Potential future development includes:
 
-### Google OAuth redirect URIs
+* 📱 Progressive Web App / mobile support
+* 📊 More advanced cycle analytics
+* 🧠 Improved personalized AI insights
+* 🔔 Smart reminders and notifications
+* 📈 Long-term health trend visualization
+* 🔐 More advanced privacy controls
+* 🤝 Expanded partner/family support
+* 🩺 Integration with professional healthcare workflows
 
-Your Google OAuth app must allow these redirect URIs:
+---
 
-- Local development: `http://localhost:3000/api/auth/callback/google`
-- Production: `https://YOUR_DOMAIN/api/auth/callback/google`
+## ⚠️ Medical Disclaimer
 
-If you use the default Vercel domain first, replace `YOUR_DOMAIN` with your `*.vercel.app` URL.
+Ember Period Tracker is a software project intended for **health tracking and informational purposes**.
 
-Preview deployments:
+AI-generated insights should not be considered medical diagnosis or professional medical advice. Users should consult qualified healthcare professionals for medical concerns.
 
-- Google OAuth preview logins will only work if that preview URL is also added in Google Cloud.
-- Because preview URLs change often, the easiest production-ready setup is to rely on localhost for development and your main Vercel/custom domain for production auth.
+---
 
-### Important deployment notes
+## 👨‍💻 Developer
 
-- `NEXTAUTH_SECRET` must be a strong random string and must not change unless you are okay invalidating sessions.
-- `ENCRYPTION_SALT` must stay stable after first production deploy, or encrypted notes and stored user master keys will stop decrypting correctly.
-- If you change any Vercel environment variable, it only applies to new deployments, so redeploy after updates.
+**Pranjal Pandey**
 
-Live preview : https://period-tracker-sage-five.vercel.app/
+B.Tech Computer Science & Engineering (AI)
+
+---
+
+## 🌐 Links
+
+**Live Application:**
+https://period-tracker-sage-five.vercel.app/
+
+**Source Code:**
+https://github.com/pranjal0526/Period_tracker
+
+---
+
+⭐ If you find the project interesting, consider starring the repository and exploring the code.
